@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "MLS Rankings";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <h1 align="center" style="margin-bottom: 20px">MLS Soccer League Rankings</h1>
+    <div>
+        <table align="center" class="table table-striped" style="width: 30%">
+            <tr>
+                <th style="border-bottom: 1px solid black" class="text-right">Rank</th>
+                <th style="border-bottom: 1px solid black" class="text-left">Team Name</th>
+                <th style="border-bottom: 1px solid black" class="text-right">Points</th>
+            </tr>
+            @{
+                int rankCount = 0;
+                foreach (var team in ViewBag.teamNames)
+                {
+                    ++rankCount;
+                    <tr>
+                        <td align="right">@rankCount</td>
+                        <td align="left">@team.teamName</td>
+                        <td align="right">@team.teamPoints</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
+</html>
